@@ -15,6 +15,8 @@ import com.google.firebase.auth.FirebaseAuthWeakPasswordException
 import com.google.firebase.firestore.FirebaseFirestore
 //import java.util.HashMap;
 
+//OI
+
 //import java.util.logging.Handler;
 
 public class FormCadastro : AppCompatActivity() {
