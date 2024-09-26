@@ -13,7 +13,7 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException
 import com.google.firebase.firestore.FirebaseFirestore
-import java.util.HashMap;
+//import java.util.HashMap;
 
 //import java.util.logging.Handler;
 
@@ -22,8 +22,8 @@ public class FormCadastro : AppCompatActivity() {
     private lateinit var editEmail: EditText
     private lateinit var editSenha: EditText
     private lateinit var btCadastrar: Button
-    private val mensagens = arrayOf("preencha todos os campos", "Cadastro Realizado com Sucesso")
     private lateinit var usuarioID: String
+    private val mensagens = arrayOf("preencha todos os campos", "Cadastro Realizado com Sucesso")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,6 +51,7 @@ public class FormCadastro : AppCompatActivity() {
     private fun cadastrarUsuario(view: View) {
         val email = editEmail.text.toString()
         val senha = editSenha.text.toString()
+
 
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, senha)
             .addOnCompleteListener { task ->
@@ -108,97 +109,3 @@ public class FormCadastro : AppCompatActivity() {
         btCadastrar = findViewById(R.id.bt_cadastrar)
     }
 }
-
-//
-//    private TextView text_tela_cadastro;
-//    private EditText edit_nome,edit_email,edit_senha;
-//    private Button bt_entrar;
-//    private ProgressBar progressBar;
-//    String[] mensagens = {"preencha todos os campos", "Login Efetuado com Sucesso"};
-//
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_form_login);
-//
-//        getSupportActionBar().hide();
-//        IniciarComponentes();
-//
-//        text_tela_cadastro.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                Intent intent = new Intent(FormLogin.this, FormCadastro.class);
-//                startActivity(intent);
-//            }
-//        });
-//
-//        bt_entrar.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                String email = edit_email.getText().toString();
-//                String senha = edit_senha.getText().toString();
-//
-//                if (email.isEmpty() || senha.isEmpty()) {
-//                    Snackbar snackbar = Snackbar.make(v, mensagens[0], Snackbar.LENGTH_SHORT);
-//                    snackbar.setBackgroundTint(Color.WHITE);
-//                    snackbar.setTextColor(Color.BLACK);
-//                    snackbar.show();
-//                } else {
-//                    AutenticarUsuario(v);
-//                }
-//            }
-//        });
-//    }
-//
-//    private void AutenticarUsuario(View view){
-//
-//        String email = edit_email.getText().toString();
-//        String senha = edit_senha.getText().toString();
-//
-//        FirebaseAuth.getInstance().signInWithEmailAndPassword(email,senha).addOnCompleteListener(new OnCompleteListener<AutheResult>() {
-//            @Override
-//            public void onComplete(@NonNull Task<AuthResult> task) {
-//
-//                if(task.isSuccessful()) {
-//                    progressBar.setVisibility(View.VISIBLE);
-//
-//                    new Handler().postDelayed(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            TelaPrincipal();
-//                        }
-//                    }, 3000);
-//                }else {
-//                    String erro;
-//
-//                    try {
-//                        throw task.getException();
-//                    }catch (Exception e){
-//                        erro = "Erro ao logar usuário";
-//                    }
-//                    Snackbar snackbar = Snackbar.make(view,erro, Snackbar.LENGTH_SHORT);
-//                    snackbar.setBackgroundTint(Color.WHITE);
-//                    snackbar.setTextColor(Color.BLACK);
-//                    snackbar.show();
-//                }
-//            }
-//        });
-//    }
-//
-//    private void TelaPrincipal(){
-//        Intent intent = new Intent(FormLogin.this,TelaPrincipal.class);
-//        startActivity(intent);
-//        finish();
-//    }
-//
-//    private void IniciarComponentes(){
-//        text_tela_cadastro = findViewById(R.id.text_tela_cadastro);
-//        edit_email = findViewById(R.id.edit_email);
-//        edit_senha = findViewById(R.id.edit_senha);
-//        bt_entrar = findViewById(R.id.bt_entrar);
-//        progressBar = findViewById(R.id.progressbar);
-//    }
-//}
-
